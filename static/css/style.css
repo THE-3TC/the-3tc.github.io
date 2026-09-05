@@ -703,7 +703,6 @@ a.tag:hover { color: var(--fg); }
   color: black;
   border: solid 1px white;
   backface-visibility: hidden;
-  animation: float 7s ease-in-out infinite;
   display: inline-block;
   font-size: clamp(3em, 8vw, 3.4em);
   font-weight: bold;
@@ -742,11 +741,6 @@ body.darkmode .logo {
 body.darkmode .logo::after {
   background: linear-gradient(90deg, #b5b9ff, #ffd6e0, #c1f7d3, #ffe5b4, #f7c8ff, #b5b9ff, #ffd6e0);
   mix-blend-mode: multiply;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(5px); }
-  50% { transform: translateY(-5px); }
 }
 
 @keyframes gradRotate {
@@ -839,7 +833,6 @@ body.darkmode .home-announcement:hover .pill {
 .main-logo-image {
   max-width: 300px;
   height: auto;
-  animation: float 7s ease-in-out infinite;
   display: block;
   margin: 0 auto;
 }
