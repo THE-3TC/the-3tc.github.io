@@ -1,6 +1,6 @@
 {{ define "main" }}
-<div id="main" class="content">
-  <article class="post-single content">
+<main id="main" class="content">
+  <article class="post-single">
     <header class="post-header">
       <h1 class="post-title">{{ .Title }}</h1>
       <div class="post-byline">
@@ -20,11 +20,11 @@
     <footer class="post-footer">
       <div class="post-tags">
         {{ range . }}
-          <a class="tag" href="/tags/{{ . | urlize }}/">#{{ . }}</a>
+          <a class="tag" href="/tags/{{ . | urlize }}/">{{ . }}</a>
         {{ end }}
       </div>
     </footer>
     {{ end }}
   </article>
-</div>
+</main>
 {{ end }}

@@ -12,11 +12,11 @@
 .cev-widget {
   margin: 2rem 0;
   padding: 1rem;
-  border: 1px solid rgba(128, 128, 128, 0.3);
-  border-radius: 8px;
-  background: rgba(128, 128, 128, 0.05);
+  border: none;
+  border-radius: 4px;
+  background: #dcdcdc;
 }
-.cev-widget__title { font-weight: 600; margin: 0 0 0.75rem; }
+.cev-widget__title { font-weight: 500; margin: 0 0 0.75rem; }
 .cev-widget__hint { font-size: 0.8rem; opacity: 0.7; margin: 0 0 0.75rem; }
 
 .cev-stage { position: relative; width: 100%; max-width: 360px; margin: 0 auto; }
@@ -25,12 +25,6 @@
 
 /* Controls (toggle buttons) */
 .cev-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
-.cev-btn {
-  font: inherit; font-size: 0.85rem; padding: 0.3rem 0.6rem;
-  border: 1px solid rgba(128, 128, 128, 0.5); border-radius: 6px;
-  background: transparent; color: inherit; cursor: pointer;
-}
-.cev-btn[aria-pressed="true"] { background: rgba(128, 128, 128, 0.2); }
 
 /* Sliders */
 .cev-sliders { display: grid; gap: 0.75rem; margin-top: 0.75rem; }
@@ -43,7 +37,7 @@
 .cev-readout { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.9rem; font-variant-numeric: tabular-nums; }
 .cev-stat { display: flex; flex-direction: column; line-height: 1.1; }
 .cev-stat__label { font-size: 0.7rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.04em; }
-.cev-stat__value { font-size: 1.4rem; font-weight: 600; }
+.cev-stat__value { font-size: 1.4rem; font-weight: 500; }
 .cev-stat--score .cev-stat__value { font-size: 1.8rem; }
 .cev-stat--undefined .cev-stat__value { color: var(--cev-red); }
 .cev-stat__sub { font-size: 0.7rem; opacity: 0.7; min-height: 1em; }
@@ -87,8 +81,8 @@
 .cev-figure { margin: 1.5rem auto; max-width: 620px; }
 .cev-figure img {
   display: block; width: 100%; height: auto;
-  background: #fff; border-radius: 8px; padding: 0.5rem;
-  border: 1px solid rgba(128, 128, 128, 0.25);
+  background: #fff; padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 .cev-figure figcaption {
   margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.75; text-align: center;

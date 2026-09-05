@@ -9,6 +9,11 @@ title = 'The 3TC'
   description = "Research notes and technical writing from The 3TC."
   author      = "The 3TC"
   copyright   = "2026"
+  tagline     = "Research notes and technical writing from The 3TC."
+
+  [params.contact]
+    website = "the3tc.ai"
+    email   = "contact@the3tc.ai"
 
   [[params.nav]]
     name = "Blog"

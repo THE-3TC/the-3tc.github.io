@@ -1,9 +1,25 @@
 <footer id="footer">
-  <div>
-    <span>© {{ .Site.Params.copyright }} <a href="/">{{ .Site.Title }}</a></span>
-    {{ range .Site.Params.footerLinks }}
-      <span class="footer-separator">·</span>
-      <span><a href="{{ .url }}">{{ .name }}</a></span>
+  <a class="footer-title" href="/">{{ .Site.Title | upper }}</a>
+
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h3>Links</h3>
+      <ul>
+        {{ range .Site.Params.footerLinks }}
+          <li><a href="{{ .url }}">{{ .name }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ with .Site.Params.contact }}
+    <div class="footer-column">
+      <h3>Contact</h3>
+      <ul>
+        {{ with .website }}<li><a href="https://{{ . }}">{{ . }}</a></li>{{ end }}
+        {{ with .email }}<li><a href="mailto:{{ . }}">{{ . }}</a></li>{{ end }}
+      </ul>
+    </div>
     {{ end }}
   </div>
+
+  <div class="footer-copyright">© {{ .Site.Params.copyright }} {{ .Site.Title }}</div>
 </footer>

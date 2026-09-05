@@ -1,0 +1,12 @@
+<li>
+  <a class="post-item-link" href="{{ .RelPermalink }}">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+    <div class="post-info">
+      <span class="post-title">{{ .Title }}</span>
+      {{ with .Description }}<span class="post-description">{{ . }}</span>{{ end }}
+      {{ with .Params.author }}
+        <span class="author">{{ if reflect.IsSlice . }}{{ delimit . ", " }}{{ else }}{{ . }}{{ end }}</span>
+      {{ end }}
+    </div>
+  </a>
+</li>

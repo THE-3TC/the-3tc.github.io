@@ -1,35 +1,17 @@
 {{ define "main" }}
-<div id="main" class="index list section-blog">
-  <h1 class="blog-page-title">{{ .Title }}</h1>
+<main id="main" class="index list">
+  <h1 class="page-title">{{ .Title }}</h1>
 
   {{ with .Content }}
-    <div class="content">{{ . }}</div>
+    <div class="page-intro">{{ . }}</div>
   {{ end }}
 
   <div class="post-group">
     <ul>
       {{ range .Pages.ByDate.Reverse }}
-      <li>
-        <a class="post-item-link" href="{{ .RelPermalink }}">
-          <time class="desktop-time" datetime="{{ .Date.Format "2006-01-02" }}">
-            {{ .Date.Format "Jan 2, 2006" }}
-          </time>
-          <div class="post-info">
-            <time class="mobile-time" datetime="{{ .Date.Format "2006-01-02" }}">
-              {{ .Date.Format "Jan 2, 2006" }}
-            </time>
-            <span class="post-title">{{ .Title }}</span>
-            {{ with .Params.subtitle }}
-              <span class="post-subtitle">{{ . }}</span>
-            {{ end }}
-            {{ with .Params.author }}
-              <span class="author">{{ if reflect.IsSlice . }}{{ delimit . ", " }}{{ else }}{{ . }}{{ end }}</span>
-            {{ end }}
-          </div>
-        </a>
-      </li>
+        {{ partial "post-item.html" . }}
       {{ end }}
     </ul>
   </div>
-</div>
+</main>
 {{ end }}
