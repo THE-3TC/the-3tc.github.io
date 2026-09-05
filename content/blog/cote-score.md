@@ -51,12 +51,12 @@ Pretty much all DLA models use a small tightly related set of metrics that have 
     <rect x="236.9" y="26.7" width="11.7" height="15.3" fill="none" stroke="var(--cote-blue)" stroke-width="0.8" opacity="0.9"/>
     <rect x="236.9" y="26.7" width="8.8" height="12.7" fill="var(--cote-green)" fill-opacity="0.45"/>
     <text x="256" y="36" font-size="7.5" fill="currentColor" opacity="0.8">area of overlap</text>
-    <line x1="230" y1="65" x2="352" y2="65" stroke="currentColor" stroke-width="0.8"/>
+    <line x1="230" y1="65" x2="320" y2="65" stroke="currentColor" stroke-width="0.8"/>
     <path d="M 234.0 88.0 h 11.7 v 15.3 h -11.7 Z M 236.9 90.6 h 11.7 v 15.3 h -11.7 Z" fill="var(--cote-green)" fill-opacity="0.45" fill-rule="nonzero"/>
     <rect x="234.0" y="88.0" width="11.7" height="15.3" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
     <rect x="236.9" y="90.6" width="11.7" height="15.3" fill="none" stroke="var(--cote-blue)" stroke-width="0.8" opacity="0.9"/>
     <text x="256" y="100" font-size="7.5" fill="currentColor" opacity="0.8">area of union</text>
-    <text x="352" y="134" font-size="11" text-anchor="end" fill="currentColor">= 0.46</text>
+    <text x="327" y="68.5" font-size="10" fill="currentColor">= 0.46</text>
   </svg>
   </div>
   <figcaption>Intersection over Union. The prediction (blue) sits a little low and to the right of the ground truth (black). IoU is the shaded overlap divided by the area the two boxes cover together: here 0.46, which already fails the usual 0.5 threshold. Photo: <a href="https://commons.wikimedia.org/wiki/File:Young_woman_jumping_with_her_lovely_beagle_dog_in_the_park_of_Bali_island,_Indonesia._(50194002498).jpg">Artem Beliaikin</a>, CC0, via Wikimedia Commons.</figcaption>
