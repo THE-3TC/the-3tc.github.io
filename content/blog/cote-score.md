@@ -111,21 +111,37 @@ In the image below and the following bar chart, we compare three different real 
 </figure>
 
 <div class="cote-widget" id="cote-failuremodes">
-  <p class="cote-widget__title">One page, different outcomes</p>
-  <svg viewBox="0 0 320 165" width="100%" role="img"
+  <p class="cote-widget__title">One page, three models, three very different parses</p>
+  <div class="viz-sheet viz-sheet--tight viz-static">
+  <svg class="viz-svg" viewBox="0 0 320 170" role="img"
        aria-label="COTe scores on one newspaper page: DocLayout-YOLO minus 0.55, Heron 0.66, PP-DocLayout-L 0.65">
-    <line x1="40" y1="100" x2="300" y2="100" stroke="currentColor" stroke-opacity="0.4"/>
-    <text x="34" y="103" font-size="8" text-anchor="end" fill="currentColor" opacity="0.6">0</text>
-    <rect x="60"  y="100" width="50" height="44" fill="var(--cote-red)" opacity="0.85"/>
-    <text x="85" y="158" font-size="9" text-anchor="middle" fill="currentColor">YOLO</text>
-    <text x="85" y="96"  font-size="9" text-anchor="middle" fill="currentColor">-0.55</text>
-    <rect x="150" y="47" width="50" height="53" fill="var(--cote-green)" opacity="0.85"/>
-    <text x="175" y="158" font-size="9" text-anchor="middle" fill="currentColor">Heron</text>
-    <text x="175" y="42"  font-size="9" text-anchor="middle" fill="currentColor">0.66</text>
-    <rect x="240" y="48" width="50" height="52" fill="var(--cote-green)" opacity="0.85"/>
-    <text x="265" y="158" font-size="9" text-anchor="middle" fill="currentColor">PPDoc-L</text>
-    <text x="265" y="43"  font-size="9" text-anchor="middle" fill="currentColor">0.65</text>
+    <defs>
+      <pattern id="fm-hatch" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)">
+        <rect width="1.6" height="5" fill="rgba(255,255,255,0.55)"/>
+      </pattern>
+    </defs>
+    <line x1="34" y1="30"  x2="300" y2="30"  stroke="currentColor" stroke-opacity="0.12"/>
+    <line x1="34" y1="100" x2="300" y2="100" stroke="currentColor" stroke-opacity="0.35"/>
+    <line x1="34" y1="150" x2="300" y2="150" stroke="currentColor" stroke-opacity="0.12"/>
+    <text x="28" y="33"  font-size="7.5" text-anchor="end" fill="currentColor" opacity="0.55">1</text>
+    <text x="28" y="103" font-size="7.5" text-anchor="end" fill="currentColor" opacity="0.55">0</text>
+    <text x="28" y="153" font-size="7.5" text-anchor="end" fill="currentColor" opacity="0.55">−0.5</text>
+    <!-- YOLO: −0.55 -->
+    <path d="M 72 100 H 108 V 152 Q 108 155 105 155 H 75 Q 72 155 72 152 Z" fill="var(--cote-red)"/>
+    <path d="M 72 100 H 108 V 152 Q 108 155 105 155 H 75 Q 72 155 72 152 Z" fill="url(#fm-hatch)"/>
+    <text x="90" y="166" font-size="8.5" text-anchor="middle" fill="currentColor">DocLayout-YOLO</text>
+    <text x="90" y="95"  font-size="9"   text-anchor="middle" fill="currentColor">−0.55</text>
+    <!-- Heron: 0.66 -->
+    <path d="M 152 100 V 57 Q 152 54 155 54 H 185 Q 188 54 188 57 V 100 Z" fill="var(--cote-green)"/>
+    <text x="170" y="166" font-size="8.5" text-anchor="middle" fill="currentColor">Heron</text>
+    <text x="170" y="49"  font-size="9"   text-anchor="middle" fill="currentColor">0.66</text>
+    <!-- PP-DocLayout-L: 0.65 -->
+    <path d="M 232 100 V 58 Q 232 55 235 55 H 265 Q 268 55 268 58 V 100 Z" fill="var(--cote-green)"/>
+    <text x="250" y="166" font-size="8.5" text-anchor="middle" fill="currentColor">PP-DocLayout-L</text>
+    <text x="250" y="50"  font-size="9"   text-anchor="middle" fill="currentColor">0.65</text>
   </svg>
+  </div>
+  <p class="viz-caption">COTe on the same 1868 page. A negative score means the parse did more harm than predicting nothing: YOLO covers almost everything but smears boxes across columns.</p>
 </div>
 
 DocLayout-YOLO covers almost everything (Coverage 0.98) but smears boxes across

@@ -366,9 +366,9 @@ a.tag:hover { background: var(--fg); color: var(--bg); text-decoration: none; }
 }
 
 /* ─────────────────────────────────────────
-   Buttons (shared with post widgets)
+   Buttons
 ───────────────────────────────────────── */
-.btn, .cote-btn, .cev-btn {
+.btn {
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 500;
@@ -382,8 +382,7 @@ a.tag:hover { background: var(--fg); color: var(--bg); text-decoration: none; }
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
-.btn:hover, .cote-btn:hover, .cev-btn:hover,
-.cote-btn[aria-pressed="true"], .cev-btn[aria-pressed="true"] {
+.btn:hover, .btn[aria-pressed="true"] {
   background: var(--fg);
   color: var(--bg);
 }

@@ -1,68 +1,9 @@
-/* COTe interactive widgets — all classes prefixed .cote- to avoid leakage. */
+/* COTe post — the shared figure system plus the component colour aliases. */
+@import url('/css/widgets.css');
 :root {
-  --cote-green: #2e9e5b;
-  --cote-yellow: #e0b528;
-  --cote-red: #d4503e;
-  --cote-purple: #8a4fbf;
-  --cote-blue: #3a78c2;
+  --cote-green: var(--viz-green);
+  --cote-yellow: var(--viz-yellow);
+  --cote-red: var(--viz-red);
+  --cote-purple: var(--viz-purple);
+  --cote-blue: var(--viz-blue);
 }
-
-.cote-widget {
-  margin: 2rem 0;
-  padding: 1rem;
-  border: none;
-  border-radius: 4px;
-  background: #dcdcdc;
-}
-.cote-widget__title { font-weight: 500; margin: 0 0 0.75rem; }
-
-.cote-stage { position: relative; width: 100%; max-width: 520px; margin: 0 auto; }
-.cote-stage__svg, .cote-stage__canvas, .cote-stage__boxes {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-}
-.cote-stage__svg { z-index: 1; }
-.cote-stage__canvas { z-index: 2; opacity: 0.55; pointer-events: none; }
-.cote-stage__boxes { z-index: 3; }
-.cote-stage__sizer { width: 100%; }
-
-.cote-predbox {
-  position: absolute;
-  border: 2px solid rgba(20, 20, 20, 0.7);
-  background: rgba(255, 255, 255, 0.04);
-  cursor: grab;
-  touch-action: none;
-}
-.cote-predbox:active { cursor: grabbing; }
-.cote-predbox--off { display: none; }
-
-.cote-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
-
-.cote-readout { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.75rem; font-variant-numeric: tabular-nums; }
-.cote-stat { display: flex; flex-direction: column; line-height: 1.1; }
-.cote-stat__label { font-size: 0.7rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.04em; }
-.cote-stat__value { font-size: 1.4rem; font-weight: 500; }
-.cote-stat--score .cote-stat__value { font-size: 1.8rem; }
-
-.cote-legend { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; font-size: 0.75rem; }
-.cote-legend__item { display: flex; align-items: center; gap: 0.3rem; }
-.cote-swatch { width: 0.9rem; height: 0.9rem; border-radius: 2px; display: inline-block; }
-
-.cote-twoup { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-@media (max-width: 540px) { .cote-twoup { grid-template-columns: 1fr; } }
-
-@media (prefers-reduced-motion: reduce) {
-  .cote-predbox { transition: none !important; }
-}
-
-/* Real-figure illustrations (raster images keep a light card so white-background
-   figures read intentionally in both light and dark themes). */
-.cote-figure { margin: 1.5rem auto; max-width: 560px; }
-.cote-figure img {
-  display: block; width: 100%; height: auto;
-  background: #fff; padding: 0.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-}
-.cote-figure figcaption {
-  margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.75; text-align: center;
-}
-.cote-figure--photo img { padding: 0; }

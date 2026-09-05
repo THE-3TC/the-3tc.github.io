@@ -1,0 +1,191 @@
+/* Interactive figures — one visual system for the COTe and CEV posts.
+   A grey card holds the controls and numbers; the drawing itself sits on a
+   white "sheet", because every figure here is about a page of text.        */
+
+:root {
+  --viz-card:   #dcdcdc;
+  --viz-sheet:  #fafafa;
+  --viz-ink:    #000000;
+  --viz-ink-2:  #555555;
+  --viz-ink-3:  #8a8a8a;
+  --viz-rule:   rgba(0, 0, 0, 0.12);
+
+  /* Component palette — validated for colour-vision safety on the sheet.
+     Same hue language as the paper figures: coverage green, overlap yellow,
+     trespass red (always hatched as a second channel), overlap+trespass
+     purple, excess blue. */
+  --viz-green:  #008300;
+  --viz-yellow: #eda100;
+  --viz-red:    #e34948;
+  --viz-purple: #4a3aa7;
+  --viz-blue:   #2a78d6;
+  --viz-grey:   #8a8a8a;
+}
+
+/* ── Card ─────────────────────────────────────────────────────────────── */
+.cote-widget, .cev-widget {
+  margin: 2.25rem 0;
+  padding: 1.25rem;
+  border-radius: 4px;
+  background: var(--viz-card);
+  color: var(--viz-ink);
+  letter-spacing: -0.01em;
+}
+.cote-widget__title, .cev-widget__title, .viz-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+}
+.viz-hint { font-size: 0.8rem; color: var(--viz-ink-2); margin: 0.5rem 0 0; }
+
+/* ── Sheet (the drawing surface) ─────────────────────────────────────── */
+.viz-sheet {
+  background: var(--viz-sheet);
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  padding: 0.75rem;
+  position: relative;
+}
+.viz-sheet--tight { padding: 0.5rem; }
+.viz-svg { display: block; width: 100%; height: auto; overflow: visible; }
+/* Wide charts keep a readable minimum width and scroll inside the sheet on phones. */
+.viz-sheet--scroll { overflow-x: auto; }
+.viz-sheet--scroll .viz-svg { min-width: 520px; }
+.viz-svg text { font-family: inherit; }
+
+/* ── Layout ───────────────────────────────────────────────────────────── */
+.viz-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
+.viz-grid-side { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 1.25rem; align-items: start; }
+@media (max-width: 600px) {
+  .viz-grid-2, .viz-grid-side { grid-template-columns: 1fr; }
+}
+.viz-stack > * + * { margin-top: 1rem; }
+.viz-caption { font-size: 0.8rem; color: var(--viz-ink-2); line-height: 1.45; margin: 0.6rem 0 0; }
+.viz-caption strong { color: var(--viz-ink); font-weight: 500; }
+
+/* ── Controls ─────────────────────────────────────────────────────────── */
+.viz-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; margin: 0 0 1rem; }
+.viz-controls--after { margin: 1rem 0 0; }
+
+.viz-btn, .viz-seg__btn {
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 0.6rem 1.05rem;
+  border: 1px solid var(--viz-ink);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--viz-ink);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.viz-btn:hover, .viz-seg__btn:hover { background: rgba(0, 0, 0, 0.07); }
+.viz-btn[aria-pressed="true"], .viz-seg__btn[aria-checked="true"] { background: var(--viz-ink); color: var(--viz-sheet); }
+.viz-btn:focus-visible, .viz-seg__btn:focus-visible { outline: 2px solid var(--viz-ink); outline-offset: 2px; }
+.viz-btn--quiet { border-color: transparent; text-decoration: underline; text-underline-offset: 0.2em; }
+.viz-btn--quiet:hover { background: transparent; }
+
+.viz-seg { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; }
+
+/* ── Readout (stat tiles) ─────────────────────────────────────────────── */
+.viz-readout { display: flex; flex-wrap: wrap; gap: 0.75rem 1.75rem; margin-top: 1rem; align-items: flex-start; }
+.viz-readout--grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem 1rem; }
+.viz-stat { display: flex; flex-direction: column; line-height: 1.1; min-width: 4.5rem; }
+.viz-stat__label {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--viz-ink-2);
+}
+.viz-stat__value { font-size: 1.5rem; font-weight: 400; margin-top: 0.2rem; }
+.viz-stat--hero .viz-stat__value { font-size: 2.25rem; letter-spacing: -0.03em; }
+.viz-stat__sub { font-size: 0.72rem; color: var(--viz-ink-2); margin-top: 0.25rem; min-height: 1.1em; }
+.viz-stat--alert .viz-stat__value { color: var(--viz-red); }
+
+.viz-swatch { display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 2px; flex-shrink: 0; }
+.viz-swatch--hatch {
+  background-image: repeating-linear-gradient(45deg, var(--viz-red) 0 2px, rgba(255,255,255,0.55) 2px 4px);
+  background-color: var(--viz-red);
+}
+.viz-swatch--line { height: 2px; width: 0.9rem; border-radius: 1px; }
+
+/* ── Component bars (COTe breakdown) ───────────────────────────────────── */
+.viz-comps { display: grid; grid-template-columns: auto 1fr auto; gap: 0.45rem 0.7rem; align-items: center; margin-top: 0.9rem; }
+.viz-comp__label { font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--viz-ink-2); display: inline-flex; align-items: center; gap: 0.35rem; }
+.viz-comp__track { height: 6px; background: rgba(0, 0, 0, 0.08); border-radius: 3px; overflow: hidden; }
+.viz-comp__fill { height: 100%; width: 0; border-radius: 3px; transition: width 0.35s cubic-bezier(.2,.7,.2,1); }
+.viz-comp__fill--hatch { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.55) 0 2px, transparent 2px 4px); }
+.viz-comp__value { font-size: 0.85rem; font-variant-numeric: tabular-nums; min-width: 2.6em; text-align: right; }
+
+/* ── Legend ───────────────────────────────────────────────────────────── */
+.viz-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; margin-top: 0.9rem; font-size: 0.75rem; color: var(--viz-ink-2); }
+.viz-legend__item { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+/* ── Notes (text that changes with state; height is reserved) ─────────── */
+.viz-note { font-size: 0.85rem; line-height: 1.5; color: var(--viz-ink); margin: 1rem 0 0; transition: opacity 0.12s ease; }
+.viz-note.is-swapping { opacity: 0; }
+
+/* ── Sliders ──────────────────────────────────────────────────────────── */
+.viz-sliders { display: grid; gap: 0.9rem; }
+.viz-slider { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 0.6rem; align-items: center; }
+.viz-slider label { font-size: 0.78rem; color: var(--viz-ink-2); letter-spacing: 0.02em; }
+.viz-slider output { font-size: 0.85rem; font-variant-numeric: tabular-nums; text-align: right; }
+.viz-slider input[type="range"] { grid-column: 1 / -1; width: 100%; accent-color: var(--viz-ink); margin: 0; }
+
+/* ── Draggable prediction boxes (COTe overlay) ───────────────────────── */
+.viz-stage { position: relative; width: 100%; }
+.viz-stage__svg, .viz-stage__canvas, .viz-stage__boxes { position: absolute; inset: 0; width: 100%; height: 100%; }
+.viz-stage__svg { z-index: 1; }
+.viz-stage__canvas { z-index: 2; opacity: 0.6; pointer-events: none; image-rendering: pixelated; }
+.viz-stage__boxes { z-index: 3; }
+.viz-stage__sizer { width: 100%; }
+
+.viz-predbox {
+  position: absolute;
+  border: 1.5px solid var(--viz-ink);
+  border-radius: 2px;
+  cursor: grab;
+  touch-action: none;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 0.15s ease, opacity 0.2s ease;
+}
+.viz-predbox:hover { box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12); }
+.viz-predbox:active, .viz-predbox.is-dragging { cursor: grabbing; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18); }
+.viz-predbox--off { opacity: 0; pointer-events: none; }
+.viz-predbox__tag {
+  position: absolute; top: -1px; left: -1px;
+  font-size: 0.62rem; font-weight: 500; line-height: 1; letter-spacing: 0.04em;
+  padding: 3px 5px; border-radius: 2px 0 3px 0;
+  background: var(--viz-ink); color: var(--viz-sheet);
+}
+
+/* ── Monospace string box (CER widget) ───────────────────────────────── */
+.viz-string {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem; line-height: 1.6; letter-spacing: 0;
+  min-height: 3.4rem; word-break: break-word;
+}
+.viz-string b { font-weight: 400; padding: 0 1px; border-radius: 2px; }
+.viz-tok--dup   { background: rgba(237, 161, 0, 0.35); }
+.viz-tok--scram { background: rgba(227, 73, 72, 0.28); }
+.viz-tok--miss  { background: rgba(138, 138, 138, 0.25); text-decoration: line-through; opacity: 0.6; }
+
+/* ── Real-figure images ───────────────────────────────────────────────── */
+.cote-figure, .cev-figure { margin: 2rem auto; max-width: 620px; }
+.cote-figure img, .cev-figure img {
+  display: block; width: 100%; height: auto;
+  background: #fff; padding: 0.5rem; border: 1px solid var(--viz-rule);
+}
+.cote-figure--photo img, .cev-figure--photo img { padding: 0; }
+.cote-figure figcaption, .cev-figure figcaption {
+  margin-top: 0.6rem; font-size: 0.85rem; color: var(--viz-ink-2); text-align: left;
+}
+
+/* Static chart in the COTe post (inline SVG in the markdown). */
+.viz-static { max-width: 520px; margin: 0 auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .viz-comp__fill, .viz-predbox, .viz-note { transition: none !important; }
+}
