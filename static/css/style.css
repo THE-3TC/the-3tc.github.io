@@ -697,12 +697,6 @@ a.tag:hover { color: var(--fg); }
 }
 
 .logo {
-  position: relative;
-  overflow: hidden;
-  background: white;
-  color: black;
-  border: solid 1px white;
-  backface-visibility: hidden;
   display: inline-block;
   font-size: clamp(3em, 8vw, 3.4em);
   font-weight: bold;
@@ -711,41 +705,8 @@ a.tag:hover { color: var(--fg); }
   line-height: 1.3;
   text-wrap: stable;
   font-family: var(--font-mono);
-  color: inherit !important;
+  color: var(--fg) !important;
   text-decoration: none !important;
-}
-
-.logo::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150%;
-  aspect-ratio: 1;
-  background: linear-gradient(90deg, #565151, #d2caca);
-  mix-blend-mode: screen;
-  animation: gradRotate 8s linear infinite;
-  pointer-events: none;
-  max-width: 100vw;
-  overflow: clip;
-  transform-origin: center;
-  transform: translate(-50%, -50%);
-}
-
-body.darkmode .logo {
-  background: black;
-  color: white;
-  border-color: black;
-}
-
-body.darkmode .logo::after {
-  background: linear-gradient(90deg, #b5b9ff, #ffd6e0, #c1f7d3, #ffe5b4, #f7c8ff, #b5b9ff, #ffd6e0);
-  mix-blend-mode: multiply;
-}
-
-@keyframes gradRotate {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .home-announcement-container {
