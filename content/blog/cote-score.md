@@ -46,17 +46,17 @@ Pretty much all DLA models use a small tightly related set of metrics that have 
     <path d="M 85.60 128.92 H 122.17 Q 123.76 128.92 123.76 130.51 V 137.40 H 86.66 Q 85.60 137.40 85.60 136.34 Z" fill="var(--cote-blue)"/>
     <text x="88.25" y="134.75" font-size="5.30" font-weight="500" letter-spacing="0.21" fill="#ffffff">PREDICTION</text>
     <!-- the fraction: IoU = overlap / union -->
-    <text x="224" y="68.5" font-size="10" text-anchor="end" fill="currentColor">IoU =</text>
-    <rect x="234.0" y="24.1" width="11.7" height="15.3" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
-    <rect x="236.9" y="26.7" width="11.7" height="15.3" fill="none" stroke="var(--cote-blue)" stroke-width="0.8" opacity="0.9"/>
-    <rect x="236.9" y="26.7" width="8.8" height="12.7" fill="var(--cote-green)" fill-opacity="0.45"/>
-    <text x="256" y="36" font-size="7.5" fill="currentColor" opacity="0.8">area of overlap</text>
-    <line x1="230" y1="65" x2="320" y2="65" stroke="currentColor" stroke-width="0.8"/>
-    <path d="M 234.0 88.0 h 11.7 v 15.3 h -11.7 Z M 236.9 90.6 h 11.7 v 15.3 h -11.7 Z" fill="var(--cote-green)" fill-opacity="0.45" fill-rule="nonzero"/>
-    <rect x="234.0" y="88.0" width="11.7" height="15.3" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
-    <rect x="236.9" y="90.6" width="11.7" height="15.3" fill="none" stroke="var(--cote-blue)" stroke-width="0.8" opacity="0.9"/>
-    <text x="256" y="100" font-size="7.5" fill="currentColor" opacity="0.8">area of union</text>
-    <text x="327" y="68.5" font-size="10" fill="currentColor">= 0.46</text>
+    <text x="224" y="74.5" font-size="10" text-anchor="end" fill="currentColor">IoU =</text>
+    <rect x="234.0" y="49.1" width="11.7" height="15.3" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
+    <rect x="236.9" y="51.7" width="11.7" height="15.3" fill="none" stroke="var(--cote-blue)" stroke-width="0.8" opacity="0.9"/>
+    <rect x="236.9" y="51.7" width="8.8" height="12.7" fill="var(--cote-green)" fill-opacity="0.45"/>
+    <text x="256" y="60.7" font-size="7.5" fill="currentColor" opacity="0.8">area of overlap</text>
+    <line x1="230" y1="71" x2="320" y2="71" stroke="currentColor" stroke-width="0.8"/>
+    <path d="M 234.0 75.0 h 11.7 v 15.3 h -11.7 Z M 236.9 77.6 h 11.7 v 15.3 h -11.7 Z" fill="var(--cote-green)" fill-opacity="0.45" fill-rule="nonzero"/>
+    <rect x="234.0" y="75.0" width="11.7" height="15.3" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
+    <rect x="236.9" y="77.6" width="11.7" height="15.3" fill="none" stroke="var(--cote-blue)" stroke-width="0.8" opacity="0.9"/>
+    <text x="256" y="86.7" font-size="7.5" fill="currentColor" opacity="0.8">area of union</text>
+    <text x="327" y="74.5" font-size="10" fill="currentColor">= 0.46</text>
   </svg>
   </div>
   <figcaption>Intersection over Union. The prediction (blue) sits a little low and to the right of the ground truth (black). IoU is the shaded overlap divided by the area the two boxes cover together: here 0.46, which already fails the usual 0.5 threshold. Photo: <a href="https://commons.wikimedia.org/wiki/File:Young_woman_jumping_with_her_lovely_beagle_dog_in_the_park_of_Bali_island,_Indonesia._(50194002498).jpg">Artem Beliaikin</a>, CC0, via Wikimedia Commons.</figcaption>
