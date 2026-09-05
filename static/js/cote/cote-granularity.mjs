@@ -5,7 +5,7 @@
 // granularities happen to line up. COTe scores the semantic unit and does not
 // care how many boxes it took.
 import { computeCoteGrid } from './cote-math.mjs';
-import { svg, h, sheet, segmented, stat, fauxLines } from '../viz.mjs';
+import { svg, h, sheet, segmented, stat, fauxLines, chip } from '../viz.mjs';
 
 const GT_LINES = 3;
 const STATES = [
@@ -17,8 +17,8 @@ const START = 'aligned';
 
 const VB_W = 200, VB_H = 112;
 const TOP = 22, BOT = 106;
-const GT = { x: 14, w: 76 };
-const PR = { x: 110, w: 76 };
+const GT = { x: 12, w: 72 };
+const PR = { x: 116, w: 72 };
 const INK = 'currentColor';
 
 const intervals = (n) => Array.from({ length: n }, (_, i) => ({ a: i / n, b: (i + 1) / n }));
@@ -128,10 +128,10 @@ export function init(container) {
       if (gi < 0) return;
       const y1 = yOf((gt[gi].a + gt[gi].b) / 2), y2 = yOf((p.a + p.b) / 2);
       dyn.appendChild(svg('path', {
-        d: `M ${GT.x + GT.w + 1} ${y1} C ${GT.x + GT.w + 10} ${y1}, ${PR.x - 10} ${y2}, ${PR.x - 1} ${y2}`,
+        d: `M ${GT.x + GT.w + 1} ${y1} C ${GT.x + GT.w + 14} ${y1}, ${PR.x - 14} ${y2}, ${PR.x - 1} ${y2}`,
         stroke: INK, 'stroke-opacity': 0.5, 'stroke-width': 0.7, fill: 'none',
       }));
-      dyn.appendChild(svg('text', { x: (GT.x + GT.w + PR.x) / 2, y: y1 - 1.5, 'font-size': 4, 'text-anchor': 'middle', fill: INK, opacity: 0.6 }, `IoU ${iou1d(pred[pi], gt[gi]).toFixed(2)}`));
+      chip(dyn, (GT.x + GT.w + PR.x) / 2, (y1 + y2) / 2 + 0.6, `IoU ${iou1d(pred[pi], gt[gi]).toFixed(2)}`, { size: 3.6, anchor: 'middle' });
     });
     // fade the new drawing in
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

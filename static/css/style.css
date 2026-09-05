@@ -366,6 +366,38 @@ a.tag:hover { background: var(--fg); color: var(--bg); text-decoration: none; }
 }
 
 /* ─────────────────────────────────────────
+   Lightbox (figure images open full screen)
+───────────────────────────────────────── */
+.post-body figure img.is-zoomable { cursor: zoom-in; transition: box-shadow 0.15s ease; }
+.post-body figure img.is-zoomable:hover,
+.post-body figure img.is-zoomable:focus-visible { box-shadow: 0 0 0 2px var(--fg); outline: none; }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 2000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.75rem; padding: 3rem var(--gutter) 1.5rem;
+  background: rgba(250, 250, 250, 0.97);
+  cursor: zoom-out;
+}
+.lightbox img {
+  max-width: 100%; max-height: calc(100vh - 8rem);
+  width: auto; height: auto; object-fit: contain;
+  cursor: default; background: #fff;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.12);
+}
+.lightbox__caption {
+  max-width: 60rem; font-size: 0.85rem; color: var(--fg-muted); text-align: center; cursor: default;
+}
+.lightbox__close {
+  position: absolute; top: 0.75rem; right: var(--gutter);
+  width: 2.5rem; height: 2.5rem; border-radius: 50%;
+  border: 1px solid var(--fg); background: transparent; color: var(--fg);
+  font-size: 1.5rem; line-height: 1; cursor: pointer;
+}
+.lightbox__close:hover { background: var(--fg); color: var(--bg); }
+body.lightbox-open { overflow: hidden; }
+
+/* ─────────────────────────────────────────
    Buttons
 ───────────────────────────────────────── */
 .btn {
