@@ -1,0 +1,44 @@
+<div id="header">
+  <div class="site-header">
+    <div class="navbar-logo">
+      <a href="/">{{ .Site.Title }}</a>
+    </div>
+
+    <div class="nav-group">
+      <nav class="top-nav" aria-label="Main navigation">
+        {{ range .Site.Params.nav }}
+          <a href="{{ .url }}">{{ .name }}</a>
+        {{ end }}
+      </nav>
+
+      <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode" type="button">
+        <!-- Moon icon (shown in light mode) -->
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <!-- Sun icon (shown in dark mode) -->
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 6a6 6 0 1 0 0 12A6 6 0 0 0 12 6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+      </button>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu-overlay" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu-nav" aria-label="Mobile navigation">
+      {{ range .Site.Params.nav }}
+        <a href="{{ .url }}">{{ .name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+
+  {{ if .IsPage }}
+    <div class="sticky-post-header" id="sticky-post-header">
+      <h1 class="post-title-sticky">{{ .Title }}</h1>
+    </div>
+  {{ end }}
+</div>

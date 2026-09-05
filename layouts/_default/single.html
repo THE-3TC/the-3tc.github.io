@@ -1,0 +1,30 @@
+{{ define "main" }}
+<div id="main" class="content">
+  <article class="post-single content">
+    <header class="post-header">
+      <h1 class="post-title">{{ .Title }}</h1>
+      <div class="post-byline">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+        {{ with .Params.author }}
+          <span class="post-sep">·</span>
+          <span class="post-author">{{ if reflect.IsSlice . }}{{ delimit . ", " }}{{ else }}{{ . }}{{ end }}</span>
+        {{ end }}
+      </div>
+    </header>
+
+    <div class="post-body">
+      {{ .Content }}
+    </div>
+
+    {{ with .Params.tags }}
+    <footer class="post-footer">
+      <div class="post-tags">
+        {{ range . }}
+          <a class="tag" href="/tags/{{ . | urlize }}/">#{{ . }}</a>
+        {{ end }}
+      </div>
+    </footer>
+    {{ end }}
+  </article>
+</div>
+{{ end }}

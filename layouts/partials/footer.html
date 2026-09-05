@@ -1,0 +1,11 @@
+<footer id="footer">
+  <div>
+    <span>© {{ .Site.Params.copyright }} <a href="/">{{ .Site.Title }}</a></span>
+    {{ range .Site.Params.footerLinks }}
+      <span class="footer-separator">·</span>
+      <span><a href="{{ .url }}">{{ .name }}</a></span>
+    {{ end }}
+    <span class="footer-separator">·</span>
+    <span class="inspiration">Inspired by <a href="https://thinkingmachines.ai/" target="_blank" rel="noopener">Thinking Machines</a></span>
+  </div>
+</footer>

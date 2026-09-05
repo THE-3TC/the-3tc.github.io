@@ -1,0 +1,26 @@
+baseURL = 'https://the-3tc.github.io/'
+locale = 'en-US'
+title = 'The 3TC'
+
+[pagination]
+  pagerSize = 20
+
+[params]
+  description = "Research notes and technical writing from The 3TC."
+  author      = "The 3TC"
+  copyright   = "2026"
+
+  [[params.nav]]
+    name = "Blog"
+    url  = "/blog/"
+
+  [[params.footerLinks]]
+    name = "RSS"
+    url  = "/index.xml"
+
+  [[params.footerLinks]]
+    name = "GitHub"
+    url  = "https://github.com/THE-3TC"
+
+[markup.goldmark.renderer]
+  unsafe = true
