@@ -17,9 +17,10 @@ function photoScene() {
   s.appendChild(svg('image', { href: '/images/park-beagle.jpg', x: 0, y: 0, width: 100, height: 72, preserveAspectRatio: 'xMidYMid slice', 'clip-path': 'url(#odp-photo)' }));
   // Boxes in the same style as the draggable prediction boxes later in the post.
   const U = 0.3; // viewBox units per CSS pixel at the panel's rendered size
-  tagBox(s, { x: 27.5, y: 16, w: 39, h: 38 }, 'PERSON', { unit: U });
-  tagBox(s, { x: 45.5, y: 22.4, w: 10.5, h: 9.4 }, 'BAG', { unit: U });
-  tagBox(s, { x: 61.4, y: 54, w: 11.8, h: 13.9 }, 'DOG', { unit: U });
+  // One colour per class, as a detector would draw them (validated for colour-vision safety).
+  tagBox(s, { x: 27.5, y: 16, w: 39, h: 38 }, 'PERSON', { unit: U, color: '#2a78d6' });
+  tagBox(s, { x: 45.5, y: 22.4, w: 10.5, h: 9.4 }, 'BAG', { unit: U, color: '#d95926' });
+  tagBox(s, { x: 61.4, y: 54, w: 11.8, h: 13.9 }, 'DOG', { unit: U, color: '#4a3aa7' });
   return s;
 }
 
