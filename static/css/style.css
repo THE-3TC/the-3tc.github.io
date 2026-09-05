@@ -379,6 +379,7 @@ a.tag:hover { background: var(--fg); color: var(--bg); text-decoration: none; }
   background: rgba(250, 250, 250, 0.97);
   cursor: zoom-out;
 }
+.lightbox[hidden] { display: none; }
 .lightbox img {
   max-width: 100%; max-height: calc(100vh - 8rem);
   width: auto; height: auto; object-fit: contain;
