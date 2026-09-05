@@ -16,7 +16,11 @@
   --font-sans: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 
-  --gutter:      clamp(1.25rem, 4vw, 3.5rem);
+  /* Spacing mirrors the3tc.ai: 4vw side gutter (6vw on mobile),
+     2vw header padding (6vw on mobile), 3.3vmax section padding. */
+  --gutter:      4vw;
+  --header-pad:  2vw;
+  --section-pad: 3.3vmax;
   --measure:     44rem;   /* reading column */
   --tracking:   -0.02em;
 }
@@ -66,7 +70,7 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 2rem 0; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.6rem var(--gutter);
+  padding: var(--header-pad) var(--gutter);
   background: var(--bg);
 }
 
@@ -130,6 +134,9 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 2rem 0; }
 .mobile-menu-nav a { font-size: 2.25rem; font-weight: 300; letter-spacing: -0.03em; }
 body.menu-open { overflow: hidden; }
 
+@media (max-width: 767px) {
+  :root { --gutter: 6vw; --header-pad: 6vw; }
+}
 @media (max-width: 640px) {
   .top-nav { display: none; }
   .hamburger { display: block; }
@@ -140,8 +147,11 @@ body.menu-open { overflow: hidden; }
    Hero (homepage)
 ───────────────────────────────────────── */
 .hero {
+  display: flex;
+  align-items: center;
+  min-height: 33vh;
   background: var(--panel);
-  padding: clamp(4rem, 12vw, 9rem) var(--gutter) clamp(3rem, 6vw, 4.5rem);
+  padding: var(--section-pad) var(--gutter);
 }
 .hero-title {
   font-size: clamp(4rem, 15vw, 12.5rem);
@@ -165,7 +175,7 @@ body.menu-open { overflow: hidden; }
 #main {
   flex-grow: 1;
   width: 100%;
-  padding: clamp(3rem, 6vw, 5rem) var(--gutter);
+  padding: var(--section-pad) var(--gutter);
 }
 
 .page-title {
@@ -321,7 +331,7 @@ a.tag:hover { background: var(--fg); color: var(--bg); text-decoration: none; }
   grid-template-columns: 1fr auto;
   gap: 2rem 4rem;
   align-items: start;
-  padding: clamp(3rem, 6vw, 5rem) var(--gutter) 2.5rem;
+  padding: var(--section-pad) var(--gutter);
   background: var(--bg);
 }
 
