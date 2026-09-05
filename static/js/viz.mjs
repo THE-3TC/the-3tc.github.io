@@ -203,3 +203,22 @@ export function chip(parent, x, y, text, { size = 4, anchor = 'start', fill = 'v
   parent.appendChild(g);
   return g;
 }
+
+// A labelled bounding box in the same style as the draggable prediction boxes
+// (.viz-predbox): thin solid outline, and a small filled corner tag carrying the
+// label. `unit` is roughly how many viewBox units make one CSS pixel, so the
+// stroke and tag come out the same size on screen whatever the viewBox.
+export function tagBox(parent, { x, y, w, h: hgt }, label, { color = '#111111', unit = 0.3, at = 'tl', ink = '#ffffff' } = {}) {
+  const sw = 1.5 * unit, fs = 10 * unit, padX = 5 * unit, padY = 3 * unit, r1 = 2 * unit, r2 = 3 * unit;
+  const g = svg('g', {});
+  g.appendChild(svg('rect', { x, y, width: w, height: hgt, rx: r1, fill: 'none', stroke: color, 'stroke-width': sw }));
+  const tw = label.length * fs * 0.62 + padX * 2, th = fs + padY * 2;
+  const tx = x - sw / 2, ty = at === 'tl' ? y - sw / 2 : y + hgt + sw / 2 - th;
+  const d = at === 'tl'
+    ? `M ${tx + r1} ${ty} H ${tx + tw} V ${ty + th - r2} Q ${tx + tw} ${ty + th} ${tx + tw - r2} ${ty + th} H ${tx} V ${ty + r1} Q ${tx} ${ty} ${tx + r1} ${ty} Z`
+    : `M ${tx} ${ty} H ${tx + tw - r2} Q ${tx + tw} ${ty} ${tx + tw} ${ty + r2} V ${ty + th} H ${tx + r1} Q ${tx} ${ty + th} ${tx} ${ty + th - r1} Z`;
+  g.appendChild(svg('path', { d, fill: color }));
+  g.appendChild(svg('text', { x: tx + padX, y: ty + padY + fs * 0.8, 'font-size': fs, 'font-weight': 500, 'letter-spacing': 0.4 * unit, fill: ink }, label));
+  parent.appendChild(g);
+  return g;
+}

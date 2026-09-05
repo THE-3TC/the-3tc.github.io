@@ -29,7 +29,7 @@ Pretty much all DLA models use a small tightly related set of metrics that have 
 <figure class="cote-figure" style="max-width:680px">
   <div class="viz-sheet viz-sheet--tight">
   <svg class="viz-svg" viewBox="0 0 360 142" role="img"
-       aria-label="Intersection over Union: a photograph of a beagle with a black ground-truth box and a blue dashed predicted box offset from it. The shaded overlap divided by the combined area gives IoU 0.46.">
+       aria-label="Intersection over Union: a photograph of a beagle with a black ground-truth box and a blue predicted box offset from it. The shaded overlap divided by the combined area gives IoU 0.46.">
     <defs>
       <pattern id="iou-hatch" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(45)">
         <rect width="1.4" height="4" fill="#ffffff" opacity="0.55"/>
@@ -39,27 +39,27 @@ Pretty much all DLA models use a small tightly related set of metrics that have 
     <image href="/images/iou-beagle.jpg" x="0" y="0" width="190" height="142" preserveAspectRatio="xMidYMid slice" clip-path="url(#iou-photo)"/>
     <rect x="86.0" y="78.0" width="34.0" height="49.0" fill="var(--cote-green)" fill-opacity="0.35"/>
     <rect x="86.0" y="78.0" width="34.0" height="49.0" fill="url(#iou-hatch)"/>
-    <rect x="75.0" y="68.0" width="45.0" height="59.0" rx="1" fill="none" stroke="#111111" stroke-width="1.6"/>
-    <rect x="86.0" y="78.0" width="45.0" height="59.0" rx="1" fill="none" stroke="var(--cote-blue)" stroke-width="1.6" stroke-dasharray="4 2.5"/>
-    <rect x="75" y="59" width="46" height="8.5" rx="1" fill="#111111"/>
-    <text x="78" y="65.4" font-size="6" fill="#ffffff">ground truth</text>
-    <rect x="92" y="127.5" width="38" height="8.5" rx="1" fill="var(--cote-blue)"/>
-    <text x="127" y="133.9" font-size="6" text-anchor="end" fill="#ffffff">prediction</text>
+    <rect x="75" y="68" width="45" height="59" rx="1.06" fill="none" stroke="#111111" stroke-width="0.80"/>
+    <path d="M 75.66 67.60 H 119.33 V 74.49 Q 119.33 76.08 117.74 76.08 H 74.60 V 68.66 Q 74.60 67.60 75.66 67.60 Z" fill="#111111"/>
+    <text x="77.25" y="73.43" font-size="5.30" font-weight="500" letter-spacing="0.21" fill="#ffffff">GROUND TRUTH</text>
+    <rect x="86" y="78" width="45" height="59" rx="1.06" fill="none" stroke="var(--cote-blue)" stroke-width="0.80"/>
+    <path d="M 85.60 128.92 H 122.17 Q 123.76 128.92 123.76 130.51 V 137.40 H 86.66 Q 85.60 137.40 85.60 136.34 Z" fill="var(--cote-blue)"/>
+    <text x="88.25" y="134.75" font-size="5.30" font-weight="500" letter-spacing="0.21" fill="#ffffff">PREDICTION</text>
     <!-- the fraction: IoU = overlap / union -->
     <text x="224" y="68.5" font-size="10" text-anchor="end" fill="currentColor">IoU =</text>
     <rect x="234.0" y="24.1" width="11.7" height="15.3" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
-    <rect x="236.9" y="26.7" width="11.7" height="15.3" fill="none" stroke="var(--cote-blue)" stroke-width="0.8" stroke-dasharray="2 1.4" opacity="0.8"/>
+    <rect x="236.9" y="26.7" width="11.7" height="15.3" fill="none" stroke="var(--cote-blue)" stroke-width="0.8" opacity="0.9"/>
     <rect x="236.9" y="26.7" width="8.8" height="12.7" fill="var(--cote-green)" fill-opacity="0.45"/>
     <text x="256" y="36" font-size="7.5" fill="currentColor" opacity="0.8">area of overlap</text>
     <line x1="230" y1="65" x2="352" y2="65" stroke="currentColor" stroke-width="0.8"/>
     <path d="M 234.0 88.0 h 11.7 v 15.3 h -11.7 Z M 236.9 90.6 h 11.7 v 15.3 h -11.7 Z" fill="var(--cote-green)" fill-opacity="0.45" fill-rule="nonzero"/>
     <rect x="234.0" y="88.0" width="11.7" height="15.3" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
-    <rect x="236.9" y="90.6" width="11.7" height="15.3" fill="none" stroke="var(--cote-blue)" stroke-width="0.8" stroke-dasharray="2 1.4" opacity="0.8"/>
+    <rect x="236.9" y="90.6" width="11.7" height="15.3" fill="none" stroke="var(--cote-blue)" stroke-width="0.8" opacity="0.9"/>
     <text x="256" y="100" font-size="7.5" fill="currentColor" opacity="0.8">area of union</text>
     <text x="352" y="134" font-size="11" text-anchor="end" fill="currentColor">= 0.46</text>
   </svg>
   </div>
-  <figcaption>Intersection over Union. The prediction (blue, dashed) sits a little low and to the right of the ground truth (black). IoU is the shaded overlap divided by the area the two boxes cover together: here 0.46, which already fails the usual 0.5 threshold. Photo: <a href="https://commons.wikimedia.org/wiki/File:Young_woman_jumping_with_her_lovely_beagle_dog_in_the_park_of_Bali_island,_Indonesia._(50194002498).jpg">Artem Beliaikin</a>, CC0, via Wikimedia Commons.</figcaption>
+  <figcaption>Intersection over Union. The prediction (blue) sits a little low and to the right of the ground truth (black). IoU is the shaded overlap divided by the area the two boxes cover together: here 0.46, which already fails the usual 0.5 threshold. Photo: <a href="https://commons.wikimedia.org/wiki/File:Young_woman_jumping_with_her_lovely_beagle_dog_in_the_park_of_Bali_island,_Indonesia._(50194002498).jpg">Artem Beliaikin</a>, CC0, via Wikimedia Commons.</figcaption>
 </figure>
 
 These metrics dominate the fields of Object detection because they provide clear numeric values and are easy to calculate, leading them to be adopted by benchmarks and competitions such as PASCAL, VOC, and COCO, which led to the boom in performance and efficiency within object detection models that occurred in the 2010s.

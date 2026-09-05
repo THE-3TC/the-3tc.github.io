@@ -2,7 +2,7 @@
 // Left: a photograph, where detection boxes overlap because objects occlude.
 // Right: a page, where text tiles the surface and one box crossing into its
 // neighbour corrupts the reading order of everything it touches.
-import { svg, h, sheet, toggle, fauxLines, hatch, chip } from '../viz.mjs';
+import { svg, h, sheet, toggle, fauxLines, hatch, chip, tagBox } from '../viz.mjs';
 
 const INK = 'currentColor';
 
@@ -15,19 +15,11 @@ function photoScene() {
   defs.appendChild(clip);
   s.appendChild(defs);
   s.appendChild(svg('image', { href: '/images/park-beagle.jpg', x: 0, y: 0, width: 100, height: 72, preserveAspectRatio: 'xMidYMid slice', 'clip-path': 'url(#odp-photo)' }));
-  // Boxes in ink on the photo; labels on dark chips so they read over any background.
-  const box = (x, y, w, hgt, label, labelBelow = false) => {
-    s.appendChild(svg('rect', { x, y, width: w, height: hgt, rx: 0.8, fill: 'none', stroke: '#ffffff', 'stroke-width': 2, 'stroke-opacity': 0.55 }));
-    s.appendChild(svg('rect', { x, y, width: w, height: hgt, rx: 0.8, fill: 'none', stroke: '#111111', 'stroke-width': 1 }));
-    const lw = label.length * 2.2 + 3, ly = labelBelow ? y + hgt + 0.8 : y - 5.6;
-    s.appendChild(svg('rect', { x, y: ly, width: lw, height: 4.8, rx: 0.6, fill: '#111111' }));
-    s.appendChild(svg('text', { x: x + 1.5, y: ly + 3.5, 'font-size': 3.4, fill: '#ffffff' }, label));
-  };
-  box(27.5, 16, 39, 38, 'person');
-  box(45.8, 22.4, 8.4, 9.2, 'backpack', true);
-  box(61.4, 54, 11.8, 13.9, 'dog');
-  // the nested backpack: overlap is the normal state of affairs in a photograph
-  s.appendChild(svg('rect', { x: 45.8, y: 22.4, width: 8.4, height: 9.2, fill: '#ffffff', opacity: 0.18 }));
+  // Boxes in the same style as the draggable prediction boxes later in the post.
+  const U = 0.3; // viewBox units per CSS pixel at the panel's rendered size
+  tagBox(s, { x: 27.5, y: 16, w: 39, h: 38 }, 'PERSON', { unit: U });
+  tagBox(s, { x: 45.5, y: 22.4, w: 10.5, h: 9.4 }, 'BAG', { unit: U });
+  tagBox(s, { x: 61.4, y: 54, w: 11.8, h: 13.9 }, 'DOG', { unit: U });
   return s;
 }
 
