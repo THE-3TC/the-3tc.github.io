@@ -58,9 +58,14 @@ export function segmented(options, current, onChange, ariaLabel) {
 }
 
 // An on/off control whose label never changes; state lives in aria-pressed.
-export function toggle(label, pressed, onChange) {
+export function toggle(label, pressed, onChange, { swatch = null } = {}) {
   const b = h('button', 'viz-btn', label);
   b.type = 'button';
+  if (swatch) {
+    const sw = h('i', 'viz-swatch');
+    sw.style.backgroundColor = swatch;
+    b.prepend(sw);
+  }
   b.setAttribute('aria-pressed', String(pressed));
   b.addEventListener('click', () => {
     pressed = !pressed;

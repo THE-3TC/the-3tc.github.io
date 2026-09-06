@@ -13,11 +13,15 @@ const SSUS = [
   { id: 1, rects: [{ x: 8, y: 88, w: 48, h: 64 }] },
   { id: 2, rects: [{ x: 64, y: 12, w: 48, h: 140 }] },
 ];
+// Each box keeps one colour for outline, tag and toggle, so a box never
+// changes its look as it moves; what changes is the paint under it. Same
+// palette as the photo panel (person / bag / dog) plus a fourth, all
+// validated for colour-vision separation.
 const INITIAL_PREDS = [
-  { id: 'A', x: 8, y: 12, w: 48, h: 64, on: true },
-  { id: 'B', x: 8, y: 88, w: 60, h: 64, on: true },   // spills right -> trespass
-  { id: 'C', x: 64, y: 12, w: 48, h: 70, on: true },
-  { id: 'D', x: 64, y: 30, w: 30, h: 40, on: false },  // toggle on -> overlap
+  { id: 'A', x: 8, y: 12, w: 48, h: 64, on: true, color: '#2a78d6' },
+  { id: 'B', x: 8, y: 88, w: 60, h: 64, on: true, color: '#d95926' },   // spills right -> trespass
+  { id: 'C', x: 64, y: 12, w: 48, h: 70, on: true, color: '#4a3aa7' },
+  { id: 'D', x: 64, y: 30, w: 30, h: 40, on: false, color: '#c0267e' },  // toggle on -> overlap
 ];
 
 // Category -> [r,g,b, hatched?]
@@ -101,7 +105,7 @@ export function init(container) {
       p.on = on;
       p._el.classList.toggle('viz-predbox--off', !on);
       recompute();
-    });
+    }, { swatch: p.color });
     controls.appendChild(t.el);
     return t;
   });
@@ -136,7 +140,11 @@ export function init(container) {
     const el = h('div', 'viz-predbox' + (p.on ? '' : ' viz-predbox--off'));
     el.dataset.id = p.id;
     el.setAttribute('aria-label', `Prediction box ${p.id}`);
-    el.appendChild(h('span', 'viz-predbox__tag', p.id));
+    el.style.borderColor = p.color;
+    el.style.setProperty('--box-color', p.color);
+    const tag = h('span', 'viz-predbox__tag', p.id);
+    tag.style.background = p.color;
+    el.appendChild(tag);
     const place = () => {
       el.style.left = pct(p.x, GRID_W); el.style.top = pct(p.y, GRID_H);
       el.style.width = pct(p.w, GRID_W); el.style.height = pct(p.h, GRID_H);

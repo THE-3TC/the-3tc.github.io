@@ -111,6 +111,7 @@
   background-color: var(--viz-red);
 }
 .viz-swatch--line { height: 2px; width: 0.9rem; border-radius: 1px; }
+.viz-btn .viz-swatch { width: 0.55rem; height: 0.55rem; margin-right: 0.45rem; vertical-align: -1px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6); }
 
 /* ── Component bars (COTe breakdown) ───────────────────────────────────── */
 .viz-comps { display: grid; grid-template-columns: auto 1fr auto; gap: 0.45rem 0.7rem; align-items: center; margin-top: 0.9rem; }
@@ -152,8 +153,8 @@
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   transition: box-shadow 0.15s ease, opacity 0.2s ease;
 }
-.viz-predbox:hover { box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12); }
-.viz-predbox:active, .viz-predbox.is-dragging { cursor: grabbing; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18); }
+.viz-predbox:hover { box-shadow: 0 0 0 3px color-mix(in srgb, var(--box-color, var(--viz-ink)) 25%, transparent); }
+.viz-predbox:active, .viz-predbox.is-dragging { cursor: grabbing; box-shadow: 0 0 0 3px color-mix(in srgb, var(--box-color, var(--viz-ink)) 40%, transparent), 0 2px 8px rgba(0, 0, 0, 0.18); }
 .viz-predbox--off { opacity: 0; pointer-events: none; }
 .viz-predbox__tag {
   position: absolute; top: -1px; left: -1px;
