@@ -45,6 +45,7 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.04);
   padding: 0.75rem;
   position: relative;
+  color: var(--viz-ink);
 }
 .viz-sheet--tight { padding: 0.5rem; }
 .viz-svg { display: block; width: 100%; height: auto; overflow: visible; }
@@ -173,14 +174,14 @@
 .viz-tok--miss  { background: rgba(138, 138, 138, 0.25); text-decoration: line-through; opacity: 0.6; }
 
 /* ── Real-figure images ───────────────────────────────────────────────── */
-.cote-figure, .cev-figure { margin: 2rem auto; max-width: 620px; }
+.cote-figure, .cev-figure { margin: 2rem auto; max-width: 100%; }
 .cote-figure img, .cev-figure img {
   display: block; width: 100%; height: auto;
   background: #fff; padding: 0.5rem; border: 1px solid var(--viz-rule);
 }
 .cote-figure--photo img, .cev-figure--photo img { padding: 0; }
 .cote-figure figcaption, .cev-figure figcaption {
-  margin-top: 0.6rem; font-size: 0.85rem; color: var(--viz-ink-2); text-align: left;
+  margin-top: 0.6rem; font-size: 0.85rem; text-align: left;
 }
 
 /* Static chart in the COTe post (inline SVG in the markdown). */

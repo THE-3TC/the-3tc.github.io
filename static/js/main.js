@@ -1,7 +1,34 @@
 (function () {
   'use strict';
 
-  var body      = document.body;
+  // ── Dark mode ──────────────────────────────────────────────────
+  var DARK_KEY = 'darkmode';
+  var body     = document.body;
+  var toggle   = document.getElementById('dark-mode-toggle');
+
+  function applyDark(on) {
+    body.classList.toggle('darkmode', on);
+    try { localStorage.setItem(DARK_KEY, on ? '1' : '0'); } catch (e) {}
+  }
+
+  // Restore saved preference; fall back to system preference
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem(DARK_KEY); } catch (e) {}
+    if (saved === '1') { applyDark(true); }
+    else if (saved === '0') { applyDark(false); }
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      applyDark(true);
+    }
+  }());
+
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      applyDark(!body.classList.contains('darkmode'));
+    });
+  }
+
+  // ── Mobile hamburger / overlay ─────────────────────────────────
   var hamburger = document.getElementById('hamburger');
   var overlay   = document.getElementById('mobile-menu');
 
@@ -27,7 +54,18 @@
     });
   }
 
-  // ── Lightbox: any figure image opens full screen ───────────────────
+  // ── Scroll-in post title (single pages) ────────────────────────
+  (function () {
+    var stickyHeader = document.getElementById('sticky-post-header');
+    if (!stickyHeader) return;
+
+    window.addEventListener('scroll', function () {
+      var scrollY = window.scrollY || window.pageYOffset;
+      stickyHeader.classList.toggle('is-visible', scrollY > 200);
+    }, { passive: true });
+  }());
+
+  // ── Lightbox: any figure image opens full screen ───────────────
   var imgs = document.querySelectorAll('.post-body figure img');
   if (imgs.length) {
     var box = document.createElement('div');
@@ -43,7 +81,7 @@
     close.className = 'lightbox__close';
     close.type = 'button';
     close.setAttribute('aria-label', 'Close');
-    close.textContent = '\u00d7';
+    close.textContent = '×';
     box.append(close, full, cap);
     document.body.appendChild(box);
     var lastFocus = null;

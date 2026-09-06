@@ -1,9 +1,16 @@
 <li>
   <a class="post-item-link" href="{{ .RelPermalink }}">
-    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+    <time class="desktop-time" datetime="{{ .Date.Format "2006-01-02" }}">
+      {{ .Date.Format "Jan 2, 2006" }}
+    </time>
     <div class="post-info">
+      <time class="mobile-time" datetime="{{ .Date.Format "2006-01-02" }}">
+        {{ .Date.Format "Jan 2, 2006" }}
+      </time>
       <span class="post-title">{{ .Title }}</span>
-      {{ with .Description }}<span class="post-description">{{ . }}</span>{{ end }}
+      {{ with .Description }}
+        <span class="post-subtitle">{{ . }}</span>
+      {{ end }}
       {{ with .Params.author }}
         <span class="author">{{ if reflect.IsSlice . }}{{ delimit . ", " }}{{ else }}{{ . }}{{ end }}</span>
       {{ end }}

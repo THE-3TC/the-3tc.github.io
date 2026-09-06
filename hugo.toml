@@ -29,3 +29,6 @@ title = 'The 3TC'
 
 [markup.goldmark.renderer]
   unsafe = true
+
+[markup.highlight]
+  noClasses = false

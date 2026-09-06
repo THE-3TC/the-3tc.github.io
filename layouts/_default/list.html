@@ -1,9 +1,9 @@
 {{ define "main" }}
-<main id="main" class="index list">
-  <h1 class="page-title">{{ .Title }}</h1>
+<div id="main" class="index list section-blog">
+  <h1 class="blog-page-title">{{ .Title }}</h1>
 
   {{ with .Content }}
-    <div class="page-intro">{{ . }}</div>
+    <div class="content">{{ . }}</div>
   {{ end }}
 
   <div class="post-group">
@@ -13,5 +13,5 @@
       {{ end }}
     </ul>
   </div>
-</main>
+</div>
 {{ end }}
