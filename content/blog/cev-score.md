@@ -1,5 +1,5 @@
 ---
-title: "Measuring global vs local text extraction quality"
+title: "The Character Error Vector: Measuring global vs local text extraction quality"
 date: 2026-06-15
 draft: false
 author: ["Jonathan Bourne", "Mwiza Simbeye", "Joseph Nockels"]
@@ -9,7 +9,7 @@ tags: ["document-ai", "ocr", "evaluation"]
 
 <link rel="stylesheet" href="/css/cev.css">
 
-## Measuring OCR error 
+## Traditional measure of OCR error 
 
 Along with the Edit Distance, the Character Error Rate (CER) is one of the most widely used metrics when measuring OCR quality. It is calculated by comparing the observed string to the ground truth string by counting the number of insertions, deletions, and
 substitutions needed to turn the predicted text into the ground truth,
