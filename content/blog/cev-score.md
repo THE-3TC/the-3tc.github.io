@@ -9,14 +9,7 @@ tags: ["document-ai", "ocr", "evaluation"]
 
 <link rel="stylesheet" href="/css/cev.css">
 
-Your OCR pipeline reports a Character Error Rate of **0.04**. Clean. Except the
-page it ran on has three columns, the model merged two of them, and the "error
-rate" you're looking at was computed over text in an order that exists nowhere
-on the page. The number isn't slightly wrong — it's **measuring something that
-has no meaning**. This is a short, interactive tour of *why*, and of a metric
-that gives you a number you can actually decompose.
-
-## Measuring local error 
+## Measuring OCR error 
 
 Along with the Edit Distance, the Character Error Rate (CER) is one of the most widely used metrics when measuring OCR quality. It is calculated by comparing the observed string to the ground truth string by counting the number of insertions, deletions, and
 substitutions needed to turn the predicted text into the ground truth,
@@ -34,7 +27,7 @@ As a rate, CER is simple and easy to understand: lower is better, and no errors 
 
 ## When parsing breaks, CER breaks
 
-However, the application of CER has the hidden assumption that the text being analysed has a meaningful order; if that is not true, the value of CER can be misleading or even undefined.
+However, the application of CER has the hidden assumption that the text being analysed is correctly parsed and has a meaningful order; if that is not true, the value of CER can be misleading or even undefined.
 
 The below example shows what CER score would be under different page-parsing scenarios when the OCR engine **correctly** extracts all characters
 
