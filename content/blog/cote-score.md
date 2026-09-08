@@ -1,5 +1,5 @@
 ---
-title: "Beyond good and bad: Decomposable evaluation scores for Document Layout Analysis"
+title: "The COTe score: Decomposable evaluation scores for Document Layout Analysis"
 date: 2026-06-11
 draft: false
 author: ["Jonathan Bourne", "Mwiza Simbeye", "Ishtar Govia"]
