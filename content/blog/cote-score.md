@@ -1,9 +1,9 @@
 ---
-title: "Why your document parser's mAP is lying to you"
+title: "Beyond good and bad: Decomposable evaluation scores for Document Layout Analysis"
 date: 2026-06-11
 draft: false
 author: ["Jonathan Bourne", "Mwiza Simbeye", "Ishtar Govia"]
-description: "An interactive tour of the COTe score — why IoU, F1, and mAP mislead on documents, and what to measure instead."
+description: "An interactive tour of the COTe score — why IoU, F1, and mAP can mislead on documents, and what to measure instead."
 tags: ["document-ai", "evaluation", "computer-vision"]
 ---
 
@@ -25,6 +25,7 @@ Pretty much all DLA models use a small tightly related set of metrics that have 
   ground-truth box overlap, as a fraction of their combined area. 
 - **F1** — A machine learning staple calculated using Recall (how many of the total were identified) and Precision (The fraction of true positives). In object detection this allows us to calulate how many objects in an image were correctly detected.
 - **mAP** (mean Average Precision) — Typically used for an entire dataset, it is the area under the precision–recall curve, averaged across classes.
+
 
 <figure class="cote-figure" style="max-width:680px">
   <div class="viz-sheet viz-sheet--tight">
