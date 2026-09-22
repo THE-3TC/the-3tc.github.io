@@ -90,9 +90,9 @@ help.
 
 As shown in the previous example, the CEV is not a single formula but a family of evaluators. The most familiar member is **SpACER**, the **Spa**tially **A**ware **Ch**aracter **E**rror **R**ate, which is a spatial analogue to the CER, returning an overall error rate that is symetric about deletions and insertions at distribution level. It is calculated as below
 
-$$\text{SpACER} = \frac{D + \hat{E}}{2C}$$
+$$\text{SpACER} = \frac{\hat{E} + D + I}{2C}$$
 
-$$\hat{E} = \lVert g - p \rVert_1 \qquad D = \max(0, |g| - |p|)$$
+$$\hat{E} = \lVert g - p \rVert_1 \qquad D = \max(0, |g| - |p|)$$ \qquad I = \max(0, |p| - |g|)$$
 
 where $g$ and $p$ are the ground-truth and predicted character-count vectors and
 $C = |g|$. It behaves like CER and across the
