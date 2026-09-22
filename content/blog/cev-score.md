@@ -92,7 +92,7 @@ As shown in the previous example, the CEV is not a single formula but a family o
 
 $$\text{SpACER} = \frac{\hat{E} + D + I}{2C}$$
 
-$$\hat{E} = \lVert g - p \rVert_1 \qquad D = \max(0, |g| - |p|)$$ \qquad I = \max(0, |p| - |g|)$$
+$$\hat{E} = \lVert g - p \rVert_1 \qquad D = \max(0, |g| - |p|) \qquad I = \max(0, |p| - |g|)$$
 
 where $g$ and $p$ are the ground-truth and predicted character-count vectors and
 $C = |g|$. It behaves like CER and across the
